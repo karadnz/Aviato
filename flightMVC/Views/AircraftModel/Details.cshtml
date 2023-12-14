@@ -1,0 +1,53 @@
+﻿@model flightMVC.ViewModels.AircraftModelDetailsViewModel
+
+@{
+    ViewData["Title"] = "Aircraft Model Details";
+}
+
+<h2>Details for the Aircraft Model</h2>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AircraftModel.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AircraftModel.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AircraftModel.Capacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AircraftModel.Capacity)
+        </dd>
+    </dl>
+</div>
+
+@if (Model.CompaniesWithModel != null && Model.CompaniesWithModel.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>Number of This Model</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in Model.CompaniesWithModel)
+            {
+                <tr>
+                    <td>@entry.Key.Name</td>
+                    <td>@entry.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h4>No companies currently own this aircraft model.</h4>
+}
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
