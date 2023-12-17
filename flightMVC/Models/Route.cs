@@ -15,8 +15,10 @@ namespace flightMVC.Models
 
 
         [ForeignKey("DepartureAirportId")]
-        public Airport DepartureAirport { get; set; }
+        [InverseProperty("DepartureRoutes")]
+        public Airport? DepartureAirport { get; set; }
         [ForeignKey("ArrivalAirportId")]
-        public Airport ArrivalAirport { get; set; }
+        [InverseProperty("ArrivalRoutes")]
+        public Airport? ArrivalAirport { get; set; }
     }
 }

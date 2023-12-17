@@ -1,0 +1,80 @@
+﻿@model flightMVC.ViewModels.AirportDetailsViewModel
+
+@{
+    ViewData["Title"] = "Airport Details";
+}
+
+<h2>Details for the Airport</h2>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Airport.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Airport.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Airport.City)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Airport.City)
+        </dd>
+    </dl>
+</div>
+
+<h3>Departure Routes</h3>
+@if (Model.DepartureRoutes != null && Model.DepartureRoutes.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Route ID</th>
+                <th>Destination Airport</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var route in Model.DepartureRoutes)
+            {
+                <tr>
+                    <td>@route.Key.Id</td>
+                    <td>@route.Key.ArrivalAirport.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h4>No departure routes from this airport.</h4>
+}
+
+<h3>Arrival Routes</h3>
+@if (Model.ArrivalRoutes != null && Model.ArrivalRoutes.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Route ID</th>
+                <th>Origin Airport</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var route in Model.ArrivalRoutes)
+            {
+                <tr>
+                    <td>@route.Key.Id</td>
+                    <td>@route.Key.DepartureAirport.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h4>No arrival routes to this airport.</h4>
+}
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

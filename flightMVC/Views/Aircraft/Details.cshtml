@@ -1,0 +1,46 @@
+﻿@model flightMVC.ViewModels.AircraftDetailsViewModel
+
+@{
+    ViewData["Title"] = "Aircraft Details";
+}
+
+<h2>Details for the Aircraft</h2>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Aircraft.AircraftName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Aircraft.AircraftName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AircraftModel.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AircraftModel.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AircraftModel.Capacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AircraftModel.Capacity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.City)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.City)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

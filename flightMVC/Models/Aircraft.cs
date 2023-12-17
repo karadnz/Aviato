@@ -10,14 +10,16 @@ namespace flightMVC.Models
         public int Id { get; set; }
 
         [Required]
+        public string AircraftName { get; set; }
+        [Required]
         public int AircraftModelId { get; set; }
         [Required]
         public int CompanyId { get; set; }
 
         // Navigation property for Company
         [ForeignKey("AircraftModelId")]
-        public AircraftModel AircraftModel { get; set; }
+        public AircraftModel? AircraftModel { get; set; }
         [ForeignKey("CompanyId")]
-        public Company Company { get; set; }
+        public Company? Company { get; set; }
     }
 }

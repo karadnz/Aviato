@@ -29,7 +29,9 @@
         <thead>
             <tr>
                 <th>Aircraft Model ID</th>
+                <th>Aircraft Name </th>
                 <th>Aircraft Model Name</th>
+                <th>Aircraft Model Capacity</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +39,7 @@
             {
                 <tr>
                     <td>@aircraft.AircraftModelId</td>
+                    <td>@aircraft.AircraftName</td>
                     <td>@aircraft.AircraftModel?.Name</td>
                     <td>@aircraft.AircraftModel?.Capacity</td>
                 </tr>

@@ -15,7 +15,7 @@ namespace flightMVC.Models
 
 
         //navigation?
-
-
+        public virtual ICollection<Route>? DepartureRoutes { get; set; }
+        public virtual ICollection<Route>? ArrivalRoutes { get; set; }
     }
 }

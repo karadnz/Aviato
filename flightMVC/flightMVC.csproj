@@ -19,11 +19,17 @@
     <None Remove="Views\Company\" />
     <None Remove="Views\AircraftModel\" />
     <None Remove="ViewModels\" />
+    <None Remove="Views\Aircraft\" />
+    <None Remove="Views\Airport\" />
+    <None Remove="Views\Route\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Views\Company\" />
     <Folder Include="Views\AircraftModel\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Aircraft\" />
+    <Folder Include="Views\Airport\" />
+    <Folder Include="Views\Route\" />
   </ItemGroup>
 </Project>

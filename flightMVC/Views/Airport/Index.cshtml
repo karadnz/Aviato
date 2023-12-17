@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Airport Home Page";
+}
+
+@model IEnumerable<flightMVC.Models.Airport>
+
+<h3 style="color:red;">@TempData["msj"]</h3>
+<p>
+    <a asp-action="Create">Add New Airport</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a href="javascript:void(0)" onclick="deleteAirport(@item.Id)">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+function deleteAirport(id) {
+    if(confirm("Are you sure you want to delete this airport?")) {
+        $.ajax({
+            url: '@Url.Action("DeleteAirport", "Airport")',
+            type: 'POST',
+            data: { id: id },
+            success: function(response) {
+                if(response.success) {
+                    alert(response.message);
+                    location.reload(); // Reloads the current page
+                } else {
+                    alert(response.message);
+                }
+            }
+        });
+    }
+}
+</script>

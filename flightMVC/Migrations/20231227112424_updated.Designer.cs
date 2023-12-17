@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebApi.Helpers;
@@ -11,9 +12,10 @@ using WebApi.Helpers;
 namespace flightMVC.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231227112424_updated")]
+    partial class updated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,10 +34,6 @@ namespace flightMVC.Migrations
 
                     b.Property<int>("AircraftModelId")
                         .HasColumnType("integer");
-
-                    b.Property<string>("AircraftName")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<int>("CompanyId")
                         .HasColumnType("integer");
