@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Create New Flight";
+}
+@model flightMVC.Models.Flight
+
+<h3 style="color:red;">@TempData["msj"]</h3>
+<h4>Flight</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FlightNumber" class="control-label"></label>
+                <input asp-for="FlightNumber" class="form-control" />
+                <span asp-validation-for="FlightNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartureTime" class="control-label">Departure Time</label>
+                <input asp-for="DepartureTime" class="form-control" type="datetime-local" />
+                <span asp-validation-for="DepartureTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArrivalTime" class="control-label">Arrival Time</label>
+                <input asp-for="ArrivalTime" class="form-control" type="datetime-local" />
+                <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RouteId" class="control-label">Route</label>
+                <select asp-for="RouteId" asp-items="ViewBag.RouteId" class="form-control">
+                    <option value="">-- Select Route --</option>
+                </select>
+                <span asp-validation-for="RouteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AircraftId" class="control-label">Aircraft</label>
+                <select asp-for="AircraftId" asp-items="ViewBag.AircraftId" class="form-control">
+                    <option value="">-- Select Aircraft --</option>
+                </select>
+                <span asp-validation-for="AircraftId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,116 @@
+﻿
+/* Radio */
+.aircraft-seats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.seat {
+    position: relative;
+    margin: 2px;
+}
+
+    .seat input[type="radio"] {
+        display: none;
+    }
+
+.seat-design {
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border: 1px solid #666;
+    display: block;
+    border-radius: 20%; /* Make seats circular */
+}
+
+.seat input[type="radio"]:checked + .seat-design {
+    background-color: #0a0; /* Change color when selected */
+}
+
+.corridor {
+    width: 20px;
+}
+
+
+
+
+
+
+///asagi eski
+
+
+/* /* old */
+.aircraft-seats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.seat {
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    margin: 2px;
+    border: 1px solid #666;
+}
+
+.corridor {
+    width: 20px;
+}
+/* */
+
+
+
+.aircraft-seats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.seat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2px;
+}
+
+    .seat input[type="checkbox"] {
+        display: none;
+    }
+
+.seat-label {
+    width: 30px;
+    height: 30px;
+    background-color: #ddd;
+    border: 1px solid #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seat input[type="checkbox"]:checked + .seat-label {
+    background-color: #0f0; /* Green to indicate selection */
+}
+
+.corridor {
+    width: 20px;
+}

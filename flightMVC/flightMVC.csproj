@@ -22,6 +22,7 @@
     <None Remove="Views\Aircraft\" />
     <None Remove="Views\Airport\" />
     <None Remove="Views\Route\" />
+    <None Remove="Views\Flight\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -31,5 +32,6 @@
     <Folder Include="Views\Aircraft\" />
     <Folder Include="Views\Airport\" />
     <Folder Include="Views\Route\" />
+    <Folder Include="Views\Flight\" />
   </ItemGroup>
 </Project>

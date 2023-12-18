@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Aircraft Details";
+    var totalSeats = Model.AircraftModel.Capacity;
+    var rows = (int)Math.Ceiling(totalSeats / 8.0);
 }
 
 <h2>Details for the Aircraft</h2>
@@ -39,6 +41,76 @@
             @Html.DisplayFor(model => model.Company.City)
         </dd>
     </dl>
+
+    <!-- Render Plane Seats -->
+    <!-- Seats Rendering -->
+    <h2>Seat Layout</h2>
+    <div class="aircraft-seats">
+        @for (int row = 0; row < rows; row++)
+        {
+            <div class="seat-row">
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="corridor"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+                <div class="seat"></div>
+            </div>
+        }
+    </div>
+
+    <h2>Seat Layout Checkbox</h2>
+    <!-- Seats Rendering -->
+    <form method="post" action="YourAction">
+        <div class="aircraft-seats">
+            @for (int row = 0; row < rows; row++)
+            {
+                <div class="seat-row">
+                    @for (int seat = 0; seat < 8; seat++)
+                    {
+                        <label class="seat">
+                            <input type="radio" name="seat" value="@($"Row{row + 1}Seat{seat + 1}")" />
+                            <span class="seat-label"></span>
+                        </label>
+                        if (seat == 3) // Add a corridor after the second seat //@($"Row{row + 1}Seat{seat + 1})"
+                        {
+                            <div class="corridor"></div>
+                        }
+                    }
+                </div>
+            }
+        </div>
+
+        <input type="submit" value="Submit Selection" />
+    </form>
+
+
+    <h2>Seat Layout Radio</h2>
+    <!-- Seats Rendering -->
+    <form class="aircraft-seats">
+        @for (int row = 0; row < rows; row++)
+        {
+            <div class="seat-row">
+                @for (int seat = 0; seat < 8; seat++)
+                {
+                    <label class="seat">
+                        <input type="radio" name="selectedSeat" value="@($"{row}-{seat}")" />
+                        <span class="seat-design"></span>
+                    </label>
+                    if (seat == 3) // Add corridor after the second seat
+                    {
+                        <div class="corridor"></div>
+                    }
+                }
+            </div>
+        }
+        <input type="submit" value="Confirm Seat" />
+    </form>
+
+
 </div>
 
 <div>

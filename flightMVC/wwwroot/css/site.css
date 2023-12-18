@@ -16,3 +16,50 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+
+
+
+
+
+
+
+/* Radio */
+.aircraft-seats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.seat {
+    position: relative;
+    margin: 2px;
+}
+
+    .seat input[type="radio"] {
+        display: none;
+    }
+
+.seat-design {
+    width: 50px; /* Adjust to fit your image size */
+    height: 50px; /* Adjust to fit your image size */
+    background-image: url('/empty.png'); /* Path to your unselected seat image */
+    display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.seat input[type="radio"]:checked + .seat-design {
+    background-image: url('/selected.png'); /* Path to your selected seat image */
+}
+
+.corridor {
+    width: 90px;
+}

@@ -12,6 +12,8 @@ namespace flightMVC.Models
         public int DepartureAirportId { get; set; }
         [Required]
         public int ArrivalAirportId { get; set; }
+        [Required]
+        public string RouteCode { get; set; }
 
 
         [ForeignKey("DepartureAirportId")]
@@ -20,5 +22,8 @@ namespace flightMVC.Models
         [ForeignKey("ArrivalAirportId")]
         [InverseProperty("ArrivalRoutes")]
         public Airport? ArrivalAirport { get; set; }
+
+        //Navigation
+        public virtual ICollection<Flight>? Flights { get; set; }
     }
 }

@@ -28,10 +28,16 @@ namespace flightMVC.Models
 
         // Navigation property
         [ForeignKey("RouteId")]
-        public Route Route { get; set; }
+        public Route? Route { get; set; }
         [ForeignKey("AircraftId")]
-        public Aircraft Aircraft { get; set; }
+        public Aircraft? Aircraft { get; set; }
 
         // Additional fields can be added as needed
+        public void ConvertTimesToUtc()
+        {
+            TimeZoneInfo gmtPlus3Zone = TimeZoneInfo.FindSystemTimeZoneById("Turkey Standard Time");
+            DepartureTime = TimeZoneInfo.ConvertTimeToUtc(DepartureTime, gmtPlus3Zone);
+            ArrivalTime = TimeZoneInfo.ConvertTimeToUtc(ArrivalTime, gmtPlus3Zone);
+        }
     }
 }

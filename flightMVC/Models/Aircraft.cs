@@ -21,5 +21,9 @@ namespace flightMVC.Models
         public AircraftModel? AircraftModel { get; set; }
         [ForeignKey("CompanyId")]
         public Company? Company { get; set; }
+
+
+        //Navigation
+        public virtual ICollection<Flight>? Flights { get; set; }
     }
 }

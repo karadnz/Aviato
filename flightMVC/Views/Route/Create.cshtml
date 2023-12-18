@@ -28,6 +28,12 @@
             </div>
 
             <div class="form-group">
+                <label asp-for="RouteCode" class="control-label">Route Code</label>
+                <input asp-for="RouteCode" class="form-control" />
+                <span asp-validation-for="RouteCode" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

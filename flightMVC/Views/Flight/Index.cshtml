@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Flights Home Page";
+}
+
+@model IEnumerable<flightMVC.Models.Flight>
+
+<h3 style="color:red;">@TempData["msj"]</h3>
+<p>
+    <a asp-action="Create">Add New Flight</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartureTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArrivalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Route.RouteCode) 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aircraft.AircraftName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FlightNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartureTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArrivalTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Route.RouteCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aircraft.AircraftName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a href="javascript:void(0)" onclick="deleteFlight(@item.Id)">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+function deleteFlight(id) {
+    if(confirm("Are you sure you want to delete this flight?")) {
+        $.ajax({
+            url: '@Url.Action("DeleteFlight", "Flight")',
+            type: 'POST',
+            data: { id: id },
+            success: function(response) {
+                if(response.success) {
+                    alert(response.message);
+                    location.reload(); // Reloads the current page
+                } else {
+                    alert(response.message);
+                }
+            }
+        });
+    }
+}
+</script>

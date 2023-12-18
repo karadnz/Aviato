@@ -48,6 +48,7 @@ namespace flightMVC.Controllers
             return View(route);
         }
 
+
         // GET: Route/Create
         public IActionResult Create()
         {
@@ -59,7 +60,7 @@ namespace flightMVC.Controllers
         // POST: Route/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,DepartureAirportId,ArrivalAirportId")] Route route)
+        public IActionResult Create([Bind("Id,DepartureAirportId,ArrivalAirportId,RouteCode")] Route route)
         {
             if (ModelState.IsValid)
             {
@@ -73,6 +74,8 @@ namespace flightMVC.Controllers
             ViewData["ArrivalAirportId"] = new SelectList(_context.Airports, "Id", "Name", route.ArrivalAirportId);
             return View(route);
         }
+
+
 
         // GET: Route/Edit/5
         public IActionResult Edit(int? id)
@@ -96,7 +99,7 @@ namespace flightMVC.Controllers
         // POST: Route/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,DepartureAirportId,ArrivalAirportId")] Route route)
+        public IActionResult Edit(int id, [Bind("Id,DepartureAirportId,ArrivalAirportId,RouteCode")] Route route)
         {
             if (id != route.Id)
             {
@@ -127,6 +130,8 @@ namespace flightMVC.Controllers
             return View(route);
         }
 
+     
+
         [HttpPost]
         public async Task<JsonResult> DeleteRoute(int id)
         {
@@ -136,6 +141,10 @@ namespace flightMVC.Controllers
                 return Json(new { success = false, message = "Route not found" });
             }
 
+            if (_context.Flights.Any(r => r.RouteId == id))
+            {
+                return Json(new { success = false, message = "Cannot delete: This route is used in flights" });
+            }
             _context.Routes.Remove(route);
             await _context.SaveChangesAsync();
 
