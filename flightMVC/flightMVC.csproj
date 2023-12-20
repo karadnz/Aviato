@@ -13,6 +13,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Core" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Data\" />
@@ -23,6 +25,8 @@
     <None Remove="Views\Airport\" />
     <None Remove="Views\Route\" />
     <None Remove="Views\Flight\" />
+    <None Remove="Views\User\" />
+    <None Remove="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -33,5 +37,7 @@
     <Folder Include="Views\Airport\" />
     <Folder Include="Views\Route\" />
     <Folder Include="Views\Flight\" />
+    <Folder Include="Views\User\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
 </Project>

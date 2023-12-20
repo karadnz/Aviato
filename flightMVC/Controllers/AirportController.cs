@@ -6,9 +6,10 @@ using Microsoft.EntityFrameworkCore;
 using flightMVC.Models;
 using flightMVC.ViewModels;
 using WebApi.Helpers;
-
+using Microsoft.AspNetCore.Authorization;
 namespace flightMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AirportController : Controller
     {
         private readonly DataContext _context;

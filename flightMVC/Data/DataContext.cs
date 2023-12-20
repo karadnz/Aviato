@@ -40,5 +40,7 @@ public class DataContext : DbContext
 
     public DbSet<Flight> Flights { get; set; }
 
+    public DbSet<User> Users { get; set; }
+
 
 }
