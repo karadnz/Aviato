@@ -9,9 +9,12 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using WebApi.Helpers;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace flightMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         private readonly DataContext _context;

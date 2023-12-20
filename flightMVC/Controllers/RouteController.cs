@@ -1,5 +1,7 @@
-﻿using flightMVC.Models;
+﻿using System.Data;
+using flightMVC.Models;
 using flightMVC.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +10,7 @@ using Route = flightMVC.Models.Route;
 
 namespace flightMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RouteController : Controller
     {
         private readonly DataContext _context;

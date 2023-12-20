@@ -6,6 +6,7 @@ using System.Security.Claims;
 using flightMVC.Models;
 using System.Threading.Tasks;
 using WebApi.Helpers;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace flightMVC.Controllers
 {
@@ -58,6 +59,29 @@ namespace flightMVC.Controllers
 
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             return View();
+        }
+
+        // GET: Register
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        // POST: Register
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                user.Role = "User"; // Assign "User" role
+                _context.Add(user);
+                await _context.SaveChangesAsync();
+                TempData["msj"] = user.Name + " has been registered";
+                return RedirectToAction(nameof(Index)); // Redirect to login page after registration
+            }
+            TempData["msj"] =" failed to register";
+            return View(user);
         }
 
         // POST: Logout

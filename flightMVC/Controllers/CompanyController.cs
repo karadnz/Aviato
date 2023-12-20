@@ -1,10 +1,13 @@
-﻿using flightMVC.Models;
+﻿using System.Data;
+using flightMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Helpers;
 
 namespace flightMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CompanyController : Controller
     {
         private readonly DataContext _context;
