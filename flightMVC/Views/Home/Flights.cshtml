@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+@model IEnumerable<flightMVC.Models.Flight>
+@foreach (var flight in Model)
+{
+    <div>
+        @* Display flight details here. Include a link to the Buy view *@
+        <a asp-action="Buy" asp-route-id="@flight.Id">Book this flight</a>
+    </div>
+}
+
+

@@ -7,5 +7,7 @@ namespace flightMVC.ViewModels
         public Aircraft Aircraft { get; set; }
         public AircraftModel AircraftModel { get; set; }
         public Company Company { get; set; }
+
+        public List<int>? BookedSeats { get; set; }
     }
 }

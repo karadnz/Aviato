@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Bookings Home Page";
+}
+
+@model IEnumerable<flightMVC.Models.Booking>
+
+<h3 style="color:red;">@TempData["msj"]</h3>
+<p>
+    <a asp-action="Create">Add New Booking</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PurchaseTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight.FlightNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.username)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PurchaseTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flight.FlightNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.username)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a href="javascript:void(0)" onclick="deleteBooking(@item.Id)">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+function deleteBooking(id) {
+    if(confirm("Are you sure you want to delete this booking?")) {
+        $.ajax({
+            url: '@Url.Action("DeleteBooking", "Booking")',
+            type: 'POST',
+            data: { id: id },
+            success: function(response) {
+                if(response.success) {
+                    alert(response.message);
+                    location.reload(); // Reloads the current page
+                } else {
+                    alert(response.message);
+                }
+            }
+        });
+    }
+}
+</script>

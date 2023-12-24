@@ -1,0 +1,65 @@
+﻿@model flightMVC.Models.Booking
+
+@{
+    ViewData["Title"] = "Buy Flight Ticket";
+}
+
+<h4>Buy Flight Ticket</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Buy">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="FlightId" class="control-label">Flight</label>
+                <input asp-for="FlightId" class="form-control" readonly />
+                <span asp-validation-for="FlightId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label">User</label>
+                <input asp-for="UserId" class="form-control" readonly />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PurchaseTime" class="control-label">PurchaseTime</label>
+                <input asp-for="PurchaseTime" class="form-control" readonly />
+                <span asp-validation-for="PurchaseTime" class="text-danger"></span>
+            </div>
+
+            <div id="seatLayoutContainer"></div> <!-- Placeholder for seat layout -->
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Buy Ticket" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            var flightId = $('#FlightId').val();
+            if (flightId) {
+                $.ajax({
+                    url: '@Url.Action("GetSeatLayout", "Booking")',
+                    data: { id: flightId },
+                    success: function (data) {
+                        $('#seatLayoutContainer').html(data);
+                    }
+                });
+            }
+        });
+    </script>
+}

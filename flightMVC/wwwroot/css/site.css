@@ -56,6 +56,15 @@ body {
     background-repeat: no-repeat;
 }
 
+.booked-seat-design {
+    width: 50px; /* Adjust to fit your image size */
+    height: 50px; /* Adjust to fit your image size */
+    background-image: url('/booked.png'); /* Path to your unselected seat image */
+    display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .seat input[type="radio"]:checked + .seat-design {
     background-image: url('/selected.png'); /* Path to your selected seat image */
 }

@@ -27,6 +27,7 @@
     <None Remove="Views\Flight\" />
     <None Remove="Views\User\" />
     <None Remove="Views\Login\" />
+    <None Remove="Views\Booking\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -39,5 +40,6 @@
     <Folder Include="Views\Flight\" />
     <Folder Include="Views\User\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\Booking\" />
   </ItemGroup>
 </Project>

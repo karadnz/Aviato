@@ -25,6 +25,8 @@ namespace flightMVC.Models
         public string Surname { get; set; }
 
 
+        //nav
+        public virtual ICollection<Booking>? Bookings { get; set; }
     }
 }
 

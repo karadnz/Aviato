@@ -1,0 +1,31 @@
+﻿@model flightMVC.ViewModels.AircraftDetailsViewModel
+
+@{
+    var totalSeats = Model.AircraftModel.Capacity;
+    var rows = (int)Math.Ceiling(totalSeats / 8.0);
+}
+
+<!-- Render Plane Seats -->
+<div class="form-group">
+    <h2>Seat Layout</h2>
+
+    @for (int row = 0; row < rows; row++)
+    {
+        <div class="seat-row">
+            @for (int seat = 0; seat < 8; seat++)
+            {
+                int seatNumber = row * 8 + seat;
+                <label class="seat")">
+                    <input type="radio" name="SeatNumber" value="@seatNumber" @(Model.BookedSeats.Contains(seatNumber) ? "disabled" : "") />
+                    <span class="@(Model.BookedSeats.Contains(seatNumber) ? "booked-seat-design" : "seat-design")"></span>
+                </label>
+                if (seat == 3)
+                {
+                    <div class="corridor"></div>
+                }
+            }
+        </div>
+    }
+
+
+</div>

@@ -35,11 +35,12 @@ namespace flightMVC.Controllers
             if (user != null)
             {
                 var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.username),
-                    new Claim("FullName", user.Name + " " + user.Surname),
-                    new Claim(ClaimTypes.Role, user.Role),
-                };
+        {
+            new Claim(ClaimTypes.Name, user.username),
+            new Claim("FullName", user.Name + " " + user.Surname),
+            new Claim(ClaimTypes.Role, user.Role),
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()), // Storing user ID as a claim
+        };
 
                 var claimsIdentity = new ClaimsIdentity(
                     claims, CookieAuthenticationDefaults.AuthenticationScheme);

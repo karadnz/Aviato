@@ -32,6 +32,10 @@ namespace flightMVC.Models
         [ForeignKey("AircraftId")]
         public Aircraft? Aircraft { get; set; }
 
+
+        //nav
+        public virtual ICollection<Booking>? Bookings { get; set; }
+
         // Additional fields can be added as needed
         public void ConvertTimesToUtc()
         {
