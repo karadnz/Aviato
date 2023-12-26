@@ -27,5 +27,8 @@ namespace flightMVC.ViewModels
             }
         }
 
+        public AircraftModel? AircraftModel { get; set; }
+        public List<int>? BookedSeats { get; set; }
+
     }
 }

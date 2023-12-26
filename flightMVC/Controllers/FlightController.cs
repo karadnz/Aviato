@@ -44,6 +44,7 @@ namespace flightMVC.Controllers
                 .Include(f => f.Route)
                     .ThenInclude(r => r.ArrivalAirport)
                 .Include(f => f.Aircraft)
+                .ThenInclude(c => c.AircraftModel)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (flight == null)
@@ -51,18 +52,23 @@ namespace flightMVC.Controllers
                 return NotFound();
             }
 
+            var bookedSeats = _context.Bookings.Where(b => b.FlightId == id).Select(b => b.SeatNumber).ToList();
+
             var viewModel = new FlightDetailsViewModel
             {
                 Flight = flight,
                 Route = flight.Route,
                 Aircraft = flight.Aircraft,
+                AircraftModel = flight.Aircraft.AircraftModel,
                 DepartureAirport = flight.Route.DepartureAirport,
                 ArrivalAirport = flight.Route.ArrivalAirport,
-                Duration = flight.ArrivalTime - flight.DepartureTime
+                Duration = flight.ArrivalTime - flight.DepartureTime,
+                BookedSeats = bookedSeats // Add this line
             };
 
             return View(viewModel);
         }
+
 
 
         // GET: Flights/Create

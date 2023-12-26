@@ -1,28 +1,40 @@
 ﻿@model flightMVC.Models.User
 
 @{
-
     ViewData["Title"] = "User Login";
 }
-<h3 style="color:red;">@TempData["msj"]</h3>
-<h2>@ViewData["Title"]</h2>
 
-<form asp-action="Index" method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Adjust the size and offset as needed -->
+            <h2 class="text-center">@ViewData["Title"]</h2>
+            @if (TempData["msj"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["msj"]
+                </div>
+            }
 
-    <div class="form-group">
-        <label asp-for="username" class="control-label"></label>
-        <input asp-for="username" class="form-control" />
-        <span asp-validation-for="username" class="text-danger"></span>
+            <form asp-action="Index" method="post" class="mt-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="username" class="control-label">Username</label>
+                    <input asp-for="username" class="form-control" placeholder="Enter username" />
+                    <span asp-validation-for="username" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="password" class="control-label">Password</label>
+                    <input asp-for="password" class="form-control" type="password" placeholder="Enter password" />
+                    <span asp-validation-for="password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Login" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label asp-for="password" class="control-label"></label>
-        <input asp-for="password" class="form-control" type="password" />
-        <span asp-validation-for="password" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <input type="submit" value="Login" class="btn btn-primary" />
-    </div>
-</form>
+</div>

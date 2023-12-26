@@ -3,31 +3,30 @@
 }
 
 @using Microsoft.AspNetCore.Mvc.Rendering
-@* ... *@
-
-
 
 <form asp-action="Flights" method="post" class="container mt-4">
-    <div class="row g-3">
+    <div class="row g-3 align-items-end">
 
         <div class="col-md-6">
             <label for="departureLocation" class="form-label">Departure City:</label>
-            <select name="departureLocation" asp-items="ViewBag.DepartureCities" class="form-select"></select>
+            <select name="departureLocation" asp-items="ViewBag.DepartureCities" class="form-select">
+                <option value="">Any</option>
+            </select>
         </div>
 
         <div class="col-md-6">
             <label for="arrivalLocation" class="form-label">Arrival City:</label>
-            <select name="arrivalLocation" asp-items="ViewBag.ArrivalCities" class="form-select"></select>
+            <select name="arrivalLocation" asp-items="ViewBag.ArrivalCities" class="form-select">
+                <option value="">Any</option>
+            </select>
         </div>
 
         <div class="col-md-6">
             <label for="departureDate" class="form-label">Departure Date:</label>
-            <input type="date" name="departureDate" class="form-control" required />
+            <input type="date" name="departureDate" class="form-control" placeholder="YYYY-MM-DD" />
         </div>
 
-
-
-        <div class="col-md-12">
+        <div class="col-md-12 text-center">
             <button type="submit" class="btn btn-primary">Search Flights</button>
         </div>
     </div>

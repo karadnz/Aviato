@@ -9,5 +9,8 @@ namespace flightMVC.ViewModels
         public User User { get; set; }
 
         // Additional properties can be added as needed
+
+        public AircraftModel? AircraftModel { get; set; }
+        public List<int>? BookedSeats { get; set; }
     }
 }

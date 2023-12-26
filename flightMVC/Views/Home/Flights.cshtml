@@ -1,14 +1,48 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Flights";
 }
 
 @model IEnumerable<flightMVC.Models.Flight>
-@foreach (var flight in Model)
-{
-    <div>
-        @* Display flight details here. Include a link to the Buy view *@
-        <a asp-action="Buy" asp-route-id="@flight.Id">Book this flight</a>
+
+<div class="container mt-4">
+    <div class="row">
+        @foreach (var flight in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Flight: @flight.Route.RouteCode</h5>
+                        <div class="flight-info">
+                            <span class="label">Aircraft:</span>
+                            <span class="value">@flight.Aircraft.AircraftModel.Name by @flight.Aircraft.Company.Name</span><br>
+                            <span class="label">Departure:</span>
+                            <span class="value">@flight.DepartureTime.ToLocalTime().ToString("MM/dd/yyyy h:mm tt")</span><br>
+                            <span class="label">Arrival:</span>
+                            <span class="value">@flight.ArrivalTime.ToLocalTime().ToString("MM/dd/yyyy h:mm tt")</span><br>
+                            <span class="label">Available Seats:</span>
+                            <span class="value" id="availableSeats-@flight.Id"></span>
+                        </div>
+                        <a href="@Url.Action("Buy", new { id = flight.Id })" class="btn btn-primary">Book this flight</a>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
-}
+</div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var flightIds = [@Html.Raw(string.Join(", ", Model.Select(f => f.Id)))];
 
+        flightIds.forEach(function(flightId) {
+            checkSeats(flightId);
+        });
+    });
+
+    function checkSeats(flightId) {
+        $.get('@Url.Action("GetAvailableSeats", "Home")', { flightId: flightId }, function(data) {
+            $('#availableSeats-' + flightId).text(data.availableSeats);
+        });
+    }
+</script>

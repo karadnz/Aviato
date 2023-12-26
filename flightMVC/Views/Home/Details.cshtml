@@ -6,7 +6,14 @@
     var rows = (int)Math.Ceiling(totalSeats / 8.0);
 }
 
-
+@{
+    if (TempData["msg"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["msg"]
+        </div>
+    }
+}
 
 <h2>Details for the Booking</h2>
 <hr />
@@ -62,8 +69,8 @@
             {
                 int seatNumber = row * 8 + seat;
                 <label class="seat">
-                    <input type="radio" name="SeatNumber" value="@seatNumber" @(Model.BookedSeats.Contains(seatNumber) ? "disabled" : "") />
-                    <span class="@(Model.BookedSeats.Contains(seatNumber) ? "booked-seat-design" : "seat-design")"></span>
+                    <input type="radio" name="SeatNumber" disabled="disabled" ) />
+                    <span class="@(Model.Booking.SeatNumber == seatNumber ? "booked-seat-design" : "seat-design")"></span>
                 </label>
                 if (seat == 3)
                 {

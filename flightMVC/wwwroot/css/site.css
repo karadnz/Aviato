@@ -19,6 +19,17 @@ body {
 
 
 
+/* flight card*/
+
+.flight-info .label {
+    display: inline-block;
+    width: 100px; /* Adjust width as needed */
+    font-weight: bold;
+}
+
+.flight-info .value {
+    display: inline-block;
+}
 
 
 

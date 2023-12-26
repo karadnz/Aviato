@@ -10,7 +10,7 @@ using WebApi.Helpers;
 
 namespace flightMVC.Controllers
 {
-    [Authorize(Roles = "Admin")] 
+
     public class BookingController : Controller
     {
         private readonly DataContext _context;
@@ -30,7 +30,6 @@ namespace flightMVC.Controllers
             return View(bookings);
         }
 
-        // GET: Bookings/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -40,6 +39,8 @@ namespace flightMVC.Controllers
 
             var booking = await _context.Bookings
                 .Include(b => b.Flight)
+                .ThenInclude(f => f.Aircraft) // Include AircraftModel
+                .ThenInclude(c => c.AircraftModel) // Include AircraftModel
                 .Include(b => b.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
@@ -48,11 +49,15 @@ namespace flightMVC.Controllers
                 return NotFound();
             }
 
+            var bookedSeats = _context.Bookings.Where(b => b.FlightId == booking.FlightId).Select(b => b.SeatNumber).ToList();
+
             var viewModel = new BookingDetailsViewModel
             {
                 Booking = booking,
                 Flight = booking.Flight,
-                User = booking.User
+                User = booking.User,
+                AircraftModel = booking.Flight.Aircraft.AircraftModel, // Include AircraftModel
+                BookedSeats = bookedSeats // Include BookedSeats
             };
 
             return View(viewModel);

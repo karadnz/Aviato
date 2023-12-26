@@ -2,8 +2,9 @@
 
 @{
     ViewData["Title"] = "Flight Details";
+    var totalSeats = Model.Aircraft.AircraftModel.Capacity;
+    var rows = (int)Math.Ceiling(totalSeats / 8.0);
 }
-
 
 
 <h2>Details for the Flight</h2>
@@ -59,6 +60,28 @@
             @Html.DisplayFor(model => model.Aircraft.AircraftName)
         </dd>
     </dl>
+</div>
+
+<!-- Render Plane Seats -->
+<div class="form-group">
+    <h2>Seat Layout</h2>
+
+    @for (int row = 0; row < rows; row++)
+    {
+        <div class="seat-row">
+            @for (int seat = 0; seat < 8; seat++)
+            {
+                int seatNumber = row * 8 + seat;
+                <label class="seat">
+                    <span class="@(Model.BookedSeats.Contains(seatNumber) ? "booked-seat-design" : "seat-design")"></span>
+                </label>
+                if (seat == 3)
+                {
+                    <div class="corridor"></div>
+                }
+            }
+        </div>
+    }
 </div>
 
 <div>
