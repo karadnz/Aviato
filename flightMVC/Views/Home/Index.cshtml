@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -8,26 +11,26 @@
     <div class="row g-3 align-items-end">
 
         <div class="col-md-6">
-            <label for="departureLocation" class="form-label">Departure City:</label>
+            <label for="departureLocation" class="form-label">@Localizer["departureC"]</label>
             <select name="departureLocation" asp-items="ViewBag.DepartureCities" class="form-select">
-                <option value="">Any</option>
+                <option value="">@Localizer["Any"]</option>
             </select>
         </div>
 
         <div class="col-md-6">
-            <label for="arrivalLocation" class="form-label">Arrival City:</label>
+            <label for="arrivalLocation" class="form-label">@Localizer["arrivalC"]</label>
             <select name="arrivalLocation" asp-items="ViewBag.ArrivalCities" class="form-select">
-                <option value="">Any</option>
+                <option value="">@Localizer["Any"]</option>
             </select>
         </div>
 
         <div class="col-md-6">
-            <label for="departureDate" class="form-label">Departure Date:</label>
+            <label for="departureDate" class="form-label">@Localizer["depD"]</label>
             <input type="date" name="departureDate" class="form-control" placeholder="YYYY-MM-DD" />
         </div>
 
         <div class="col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Search Flights</button>
+            <button type="submit" class="btn btn-primary">@Localizer["searchF"]</button>
         </div>
     </div>
 </form>

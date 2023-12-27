@@ -15,6 +15,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Core" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Localization" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Data\" />
@@ -28,6 +29,9 @@
     <None Remove="Views\User\" />
     <None Remove="Views\Login\" />
     <None Remove="Views\Booking\" />
+    <None Remove="Resources\" />
+    <None Remove="Resources\Views\" />
+    <None Remove="Resources\Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -41,5 +45,33 @@
     <Folder Include="Views\User\" />
     <Folder Include="Views\Login\" />
     <Folder Include="Views\Booking\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Views\" />
+    <Folder Include="Resources\Views\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Views\Home\Index.en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Index %28copy%29.en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Index.tr-TR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Flights.en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Flights.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Views\Home\Index.tr-TR.Designer.cs">
+      <DependentUpon>Index.tr-TR.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Index.en-US.Designer.cs">
+      <DependentUpon>Index.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Flights.en-US.Designer.cs">
+      <DependentUpon>Flights.en-US.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
