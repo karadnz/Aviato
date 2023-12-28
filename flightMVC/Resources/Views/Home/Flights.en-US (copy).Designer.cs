@@ -56,5 +56,50 @@ namespace flightMVC.Resources.Views.Home {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aircraft:.
+        /// </summary>
+        internal static string Aircraft {
+            get {
+                return ResourceManager.GetString("Aircraft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrival:.
+        /// </summary>
+        internal static string Arrival {
+            get {
+                return ResourceManager.GetString("Arrival", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Seats:.
+        /// </summary>
+        internal static string Available_Seats {
+            get {
+                return ResourceManager.GetString("Available Seats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Book this flight.
+        /// </summary>
+        internal static string Book {
+            get {
+                return ResourceManager.GetString("Book", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departure:.
+        /// </summary>
+        internal static string Departure {
+            get {
+                return ResourceManager.GetString("Departure", resourceCulture);
+            }
+        }
     }
 }

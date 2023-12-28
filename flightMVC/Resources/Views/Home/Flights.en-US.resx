@@ -12,5 +12,29 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
+
+
+
+	<data name="Aircraft" xml:space="preserve">
+        <value>Aircraft:</value>
+    </data>
+
+	<data name="Departure" xml:space="preserve">
+        <value>Departure:</value>
+    </data>
+
+	<data name="Arrival" xml:space="preserve">
+        <value>Arrival:</value>
+    </data>
+
+	<data name="Available Seats" xml:space="preserve">
+        <value>Available Seats:</value>
+    </data>
+
+	<data name="Book" xml:space="preserve">
+        <value>Book this flight</value>
+    </data>
+
+
 </root>
 

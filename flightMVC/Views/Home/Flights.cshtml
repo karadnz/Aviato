@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
     ViewData["Title"] = "Flights";
 }
 
@@ -13,16 +16,16 @@
                     <div class="card-body">
                         <h5 class="card-title">Flight: @flight.Route.RouteCode</h5>
                         <div class="flight-info">
-                            <span class="label">Aircraft:</span>
+                            <span class="label">@Localizer["Aircraft"]</span>
                             <span class="value">@flight.Aircraft.AircraftModel.Name by @flight.Aircraft.Company.Name</span><br>
-                            <span class="label">Departure:</span>
+                            <span class="label">@Localizer["Departure"]</span>
                             <span class="value">@flight.DepartureTime.ToLocalTime().ToString("MM/dd/yyyy h:mm tt")</span><br>
-                            <span class="label">Arrival:</span>
+                            <span class="label">@Localizer["Arrival"]</span>
                             <span class="value">@flight.ArrivalTime.ToLocalTime().ToString("MM/dd/yyyy h:mm tt")</span><br>
-                            <span class="label">Available Seats:</span>
+                            <span class="label">@Localizer["Available Seats"]</span>
                             <span class="value" id="availableSeats-@flight.Id"></span>
                         </div>
-                        <a href="@Url.Action("Buy", new { id = flight.Id })" class="btn btn-primary">Book this flight</a>
+                        <a href="@Url.Action("Buy", new { id = flight.Id })" class="btn btn-primary">@Localizer["Book"]</a>
                     </div>
                 </div>
             </div>

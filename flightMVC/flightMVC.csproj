@@ -32,6 +32,7 @@
     <None Remove="Resources\" />
     <None Remove="Resources\Views\" />
     <None Remove="Resources\Views\Home\" />
+    <None Remove="Resources\Views\Home\Flights.tr-TR" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -62,6 +63,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Flights.en-US.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\Home\Flights %28copy%29.en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Flights.tr-TR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Views\Home\Index.tr-TR.Designer.cs">
@@ -70,8 +75,11 @@
     <Compile Update="Resources\Views\Home\Index.en-US.Designer.cs">
       <DependentUpon>Index.en-US.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Views\Home\Flights.en-US.Designer.cs">
+    <Compile Update="Resources\Views\Home\Flights.en-US %28copy%29.Designer.cs">
       <DependentUpon>Flights.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\Home\Flights.tr-TR.Designer.cs">
+      <DependentUpon>Flights.tr-TR.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
